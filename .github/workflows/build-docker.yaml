@@ -13,7 +13,12 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: build image
-        run: docker build ./api/ -t bhardwajcr7/devops-qr-code-backend:latest
+        run: |
+          docker build ./api/ -t bhardwajcr7/devops-qr-code-backend:latest
+          docker build ./front-end-nextjs/ -t bhardwajcr7/devops-qr-code-frontend:latest
+
 
       - name: push image to docker hub
-        run: docker push bhardwajcr7/devops-qr-code-backend:latest
+        run: |
+          docker push bhardwajcr7/devops-qr-code-backend:latest
+          docker push bhardwajcr7/devops-qr-code-frontend:latest
