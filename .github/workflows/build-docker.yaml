@@ -1,0 +1,13 @@
+name: Build and push docker image to dockerhub
+on: [workflow_dispatch]
+jobs:
+  publish_images:
+    runs_on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build image
+        run: docker build ./api/ -t bhardwajcr7/devops-qr-code-backend:latest
+      - name: push image to docker hub
+        run: |
+          docker push bhardwajcr7/devops-qr-code-backend:latest
