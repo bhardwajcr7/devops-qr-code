@@ -2,10 +2,7 @@ name: Build and push docker image to dockerhub
 on:
   push:
     branches:
-      - main
-    paths:
-      - "api/dockerfile"
-      - "front-end-nextjs/dockerfile"
+      - prod
 jobs:
   publish_images:
     runs-on: ubuntu-latest
