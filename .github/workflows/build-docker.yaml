@@ -1,23 +1,23 @@
 name: Build and push docker image to dockerhub
-
-on: [workflow_dispatch]
-
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "api/dockerfile"
+      - "front-end-nextjs/dockerfile"
 jobs:
   publish_images:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
-
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-
       - name: build image
         run: |
           docker build ./api/ -t bhardwajcr7/devops-qr-code-backend:latest
           docker build ./front-end-nextjs/ -t bhardwajcr7/devops-qr-code-frontend:latest
-
-
       - name: push image to docker hub
         run: |
           docker push bhardwajcr7/devops-qr-code-backend:latest
