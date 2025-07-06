@@ -37,14 +37,14 @@ The front-end code exits in the `front-end-nextjs` directory. You can run the fr
 
 ## Goal
 
-The goal is to get hands-on with DevOps practices like Containerization, CICD and monitoring.
-
-Look at the capstone project for more detials.
-
-## Author
-
-[Rishab Kumar](https://github.com/rishabkumar7)
-
-## License
-
-[MIT](./LICENSE)
+The goal is to:
+- Create dockerfile of FE and BE
+- Create docker images
+- Push docker images to dockerhub repository
+- Create github actions to auto-create docker images of FE and BE and push to dockerhub
+- Deploy an EKS cluster using Terraform
+- Deploy FE and BE using kubectl deployments
+- Expose the FE using LoadBalancer on port 80
+- BE should be hosted using ClusterIP service, preventing public exposure
+- FE should be able to query API requests on BE
+- Monitoring the applications, pods and nodes
